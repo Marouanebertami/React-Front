@@ -1,0 +1,170 @@
+.nav-tabs {
+  background-color: #dfe6e9;
+}
+
+.nav-tabs a.active {
+  color: #000 !important;
+  border: none;
+}
+
+.nav-tabs a {
+  font-size: 14px;
+  padding: 29px 44px;
+  color: #636e72;
+}
+
+.nav-tabs a:hover {
+  color: #636e72;
+}
+
+.ContainerTabs {
+  position: relative;
+  z-index: 100;
+  margin-top: -80px;
+}
+
+.spanTabTitle {
+  position: relative;
+  top: 2px;
+}
+
+.tab-pane {
+  padding: 50px;
+}
+
+.tab-pane h4.tabTitleContent {
+  font-family: "Poppins";
+  font-weight: 700;
+  float: left;
+  padding-right: 20px;
+}
+
+.tab-pane p.tabPriceContent {
+  float: left;
+  position: relative;
+  top: 4px;
+  font-family: "Poppins";
+  font-weight: 700;
+  color: rgb(63, 208, 212);
+}
+
+.tab-pane p.tabPriceContent small {
+  color: #636e72;
+  padding-left: 10px;
+  position: relative;
+}
+
+.tab-pane p.tabDescriptionContent {
+  font-family: "Poppins";
+}
+
+.tab-pane div.tabInformationContentTitle {
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.tab-pane div.tabInformationContentValue {
+  font-family: "Poppins";
+  font-size: 14px;
+}
+
+.galrieTitre {
+  font-family: "Poppins";
+  font-weight: 700;
+}
+
+.tabTitleProgramme {
+  font-family: "Poppins";
+  font-weight: 700;
+}
+
+.nbrJour {
+  background-color: #0d6aaf;
+  text-align: center;
+  padding: 10px;
+  color: #fff;
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.jourTitle {
+  padding-top: 10px;
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 20px;
+}
+
+span.separator {
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  width: 50px;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+span.separator span.separatorContent {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  display: block;
+  width: 0;
+  height: 100%;
+  border-right: 2px dashed #0d6aaf;
+  z-index: 8;
+  content: "";
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.tabDescriptionReserver {
+  font-family: "Poppins";
+  font-weight: 400;
+}
+
+.calendarYearMonthDiv {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  text-align: center;
+  background: #0d6aaf;
+  color: #fff;
+}
+
+.calendarYearMonthDiv .calendarYearMonthLabel {
+  font-family: "Poppins";
+  font-weight: 700;
+}
+
+.table thead th {
+  border: none !important;
+}
+
+.table td,
+.table th {
+  border: none !important;
+}
+
+.hasTarif span {
+  padding: 5px 10px;
+  background-color: #0d6aaf;
+  border-radius: 50%;
+  color: #fff;
+}
+
+.calendar-day {
+  font-family: "Poppins";
+  font-weight: 400;
+}
+
+.hasTarif span {
+  cursor: pointer;
+}

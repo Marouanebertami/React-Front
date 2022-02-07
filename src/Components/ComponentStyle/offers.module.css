@@ -1,0 +1,105 @@
+.containerGlob {
+  background-color: rgba(248, 248, 248, 1);
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.topTitle {
+  color: rgba(63, 208, 212, 1);
+  font-family: "Dancing Script";
+  font-size: 30px;
+}
+
+.title {
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 50px;
+}
+
+.description {
+  font-family: "Poppins";
+  font-weight: 300;
+}
+
+.offerVueParent {
+  width: 100%;
+  height: 520px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.offerVueParent::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #00000073;
+}
+
+.offerTitleParent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.offerTitle {
+  color: #fff;
+  font-size: 50px;
+  font-family: "Poppins";
+  font-weight: 700;
+}
+
+.offerTopTitle {
+  color: #fff;
+  font-family: "Dancing Script";
+  font-size: 30px;
+}
+
+.offerTab {
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 19px;
+  padding: 15px 20px;
+  text-transform: uppercase;
+}
+
+.offerTab.active {
+  color: #000;
+}
+
+.checkoutTitles {
+  color: #0d6aaf;
+  font-family: "Poppins";
+  font-weight: 700;
+}
+
+.checkoutTitlesSpan {
+  padding: 11px 20px;
+  margin-right: 10px;
+  background: #0d6aaf;
+  color: #fff;
+  border-radius: 50%;
+}
+
+.formulaireFacturation {
+  font-family: "Poppins";
+}
+
+.spaceShowVoyageurTitle {
+  font-family: "Poppins";
+}
+
+.btnReservation {
+  width: 100%;
+  background: #0d6aaf;
+  border-color: #0d6aaf;
+  font-family: "Poppins";
+}
+
+.btnReservation:hover {
+  background: #0d6aaf;
+  border-color: #0d6aaf;
+}

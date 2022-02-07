@@ -1,0 +1,25 @@
+.inputStyle {
+  height: 100% !important;
+  border-radius: 0 !important;
+  border-color: transparent !important;
+  padding-left: 60px !important;
+  border: none !important;
+}
+
+.inputStyle:focus {
+  box-shadow: none !important;
+}
+
+.iconStyle {
+  position: absolute;
+  top: 49%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+  color: #92989e;
+}
+
+.formGroup {
+  margin: 0;
+  height: 100%;
+  position: relative;
+}

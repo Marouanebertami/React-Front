@@ -1,0 +1,12 @@
+.header {
+  font-family: "Poppins";
+  font-weight: 500;
+  color: #000;
+}
+.navLink {
+  padding: 0 30px;
+}
+
+.navLink a {
+  color: #000 !important;
+}

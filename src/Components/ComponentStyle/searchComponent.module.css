@@ -1,0 +1,22 @@
+.inputSearch {
+  border-radius: 0 !important;
+  border-color: #ffffff5e !important;
+  background-color: #ffffff5e !important;
+  color: #fff !important;
+}
+
+.inputSearch::placeholder {
+  color: #fff !important;
+  font-family: "Poppins";
+  font-weight: 300;
+}
+
+.searchSpace {
+  padding: 15px;
+  background-color: rgb(63, 208, 212);
+}
+
+.searchSpace h4 {
+  color: #fff;
+  font-family: "Poppins";
+}
