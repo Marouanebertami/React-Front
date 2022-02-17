@@ -34,7 +34,7 @@ class OfferComp extends Component {
         if(!isFetchingOfferSelect && this.props.type == "offer"){
             return (
                 <div>
-                    <div className={offerStyle.offerVueParent} style={{backgroundImage: `url(${offerSelected.image_url.chemin})`}}>
+                    <div className={offerStyle.offerVueParent} style={{backgroundImage: `url(${offerSelected.image_url})`}}>
                         <div className={offerStyle.offerTitleParent}>
                             <span className={offerStyle.offerTopTitle}>Amazing Tour</span>
                             <h2 className={offerStyle.offerTitle}>{ offerSelected.titre }</h2>

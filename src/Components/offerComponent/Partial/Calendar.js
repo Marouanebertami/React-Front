@@ -211,9 +211,11 @@ class Calendar extends Component {
         }
 
         let daysReserve = [];
-        this.props.tarifs.map((item, i) => {
-            daysReserve.push({"date_depart" : item.depart, "id": item.id});
-        })
+        if(this.props.tarifs != null){
+            this.props.tarifs.map((item, i) => {
+                daysReserve.push({"date_depart" : item.depart, "id": item.id});
+            });
+        }
         
         let daysInMonth = [];
         for (let d = 1; d <= this.daysInMonth(); d++) {

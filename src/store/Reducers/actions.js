@@ -44,11 +44,10 @@ function receiveOfferError(error){
 export function fetchOfferData() {
     return dispatch => {
         dispatch(requestOfferData());
-        const response = API.get('/getHomeData')
+        return API.get('/getHomeData')
             .then(res => res)
             .then(json => dispatch(receiveOfferData(json)))
             .catch(err => dispatch(receiveOfferError(err)));
-        return response;
     };
 }
 
@@ -75,14 +74,12 @@ function receiveOfferToShowError(error){
 export function fetchOfferToShowData() {
     return dispatch => {
         dispatch(requestOfferToShowData());
-        const response = API.get('/getOffer')
+        return API.get('/getOffer')
             .then(res => res)
             .then(json => dispatch(receiveOfferToShowData(json)))
             .catch(err => dispatch(receiveOfferToShowError(err)));
-        return response;
     };
 }
-
 
 export function requestOfferSelectedData() {
     return {
@@ -107,11 +104,10 @@ function receiveOfferSelectedError(error){
 export function fetchOfferSelectedData(offerId) {
     return dispatch => {
         dispatch(requestOfferSelectedData());
-        const response = API.get(`/getOfferById/${offerId}`)
+        return API.get(`/getOfferById/${offerId}`)
             .then(res => res)
             .then(json => dispatch(receiveOfferSelectedData(json)))
             .catch(err => dispatch(receiveOfferSelectedError(err)));
-        return response;
     };
 }
 
@@ -138,11 +134,10 @@ function receiveDestinationError(error){
 export function fetchDestinationData(id_destination) {
     return dispatch => {
         dispatch(requestDestinationData());
-        const response = API.get(`/getDestination/${id_destination}`)
+        return API.get(`/getDestination/${id_destination}`)
             .then(res => res)
             .then(json => dispatch(receiveDestinationData(json)))
             .catch(err => dispatch(receiveDestinationError(err)));
-        return response;
     };
 }
 
@@ -176,11 +171,10 @@ function receiveSliderError(error){
 export function fetchSliderData() {
     return dispatch => {
         dispatch(requestSliderData());
-        const response = API.get('/sliderOffer')
+        return API.get('/sliderOffer')
             .then(res => res)
             .then(json => dispatch(receiveSliderData(json)))
             .catch(err => dispatch(receiveSliderError(err)));
-        return response;
     };
 }
 
@@ -215,7 +209,7 @@ function receiveSearchError(error){
 export function fetchSearchData(id_destination = null, id_type = null, month = null, page = 1) {
     return dispatch => {
         dispatch(requestSearchData());
-        const response = API.get('/searchOffer', {
+        return API.get('/searchOffer', {
             params: {
                 id_destination: id_destination,
                 id_type: id_type,
@@ -225,7 +219,6 @@ export function fetchSearchData(id_destination = null, id_type = null, month = n
             .then(res => res)
             .then(json => dispatch(receiveSearchData(json)))
             .catch(err => dispatch(receiveSearchError(err)));
-        return response;
     };
 }
 
@@ -261,10 +254,9 @@ function receiveLogoUrlError(error){
 export function fetchLogoUrl() {
     return dispatch => {
         dispatch(requestLogoUrl());
-        const response = API.get('/getLogo')
+        return API.get('/getLogo')
             .then(res => res)
             .then(json => dispatch(receiveLogoUrl(json)))
             .catch(err => dispatch(receiveLogoUrlError(err)));
-        return response;
     };
 }

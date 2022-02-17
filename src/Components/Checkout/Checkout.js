@@ -4,7 +4,6 @@ import { Container, Row, Col,
         Form, Table, Button } from 'react-bootstrap';
 import offerStyle from '../ComponentStyle/offers.module.css';
 import API from '../../apiUsers';
-// import { ClipLoader } from "react-spinners";
 
 class Checkout extends Component {
 
@@ -63,14 +62,14 @@ class Checkout extends Component {
             state.reservation.map(item => {
                 if(item.information_voyageur != null){
                     item.information_voyageur.map(info => {
-                        if(info.nom == "" || info.nom == undefined){
+                        if(info.nom === "" || info.nom === undefined){
                             info.nomError = "Nom est Obligatoire";
                             hasError = true;
                         }else{
                             info.nomError = "";
                         }
 
-                        if(info.prenom == "" || info.prenom == undefined){
+                        if(info.prenom === "" || info.prenom === undefined){
                             info.prenomError = "Prenom est Obligatoire";
                             hasError = true;
                         }else{
@@ -82,28 +81,28 @@ class Checkout extends Component {
         }
 
         if(state.facture_Info != null){
-            if(state.facture_Info.nom == "" || state.facture_Info.nom == undefined){
+            if(state.facture_Info.nom === "" || state.facture_Info.nom === undefined){
                 state.facture_Info.nomError = "Nom est Obligatoire";
                 hasError = true;
             }else{
                 state.facture_Info.nomError = "";
             }
 
-            if(state.facture_Info.prenom == "" || state.facture_Info.prenom == undefined){
+            if(state.facture_Info.prenom === "" || state.facture_Info.prenom === undefined){
                 state.facture_Info.prenomError = "Prenom est Obligatoire";
                 hasError = true;
             }else{
                 state.facture_Info.prenomError = "";
             }
 
-            if(state.facture_Info.email == "" || state.facture_Info.email == undefined){
+            if(state.facture_Info.email === "" || state.facture_Info.email === undefined){
                 state.facture_Info.emailError = "Email est Obligatoire";
                 hasError = true;
             }else{
                 state.facture_Info.prenomError = "";
             }
 
-            if(state.facture_Info.phone == "" || state.facture_Info.phone == undefined){
+            if(state.facture_Info.phone === "" || state.facture_Info.phone === undefined){
                 state.facture_Info.phoneError = "Téléphone est Obligatoire";
                 hasError = true;
             }else{
@@ -186,7 +185,7 @@ class Checkout extends Component {
 
     render() {
 
-        if(this.props.location.state == undefined){
+        if(this.props.location.state === undefined){
             return (<Redirect to = {{
                 pathname: '/404',
             }}/>)
@@ -242,7 +241,7 @@ class Checkout extends Component {
                                                     onChange={this.handelFactureInfoPrenom}
                                                     placeholder="Prénom"/>
                                                 {
-                                                    (this.state.facture_Info.prenomError != "") ? (<Form.Label style={{ display: "block" }} className="invalid-feedback">{this.state.facture_Info.prenomError}</Form.Label>) : ""
+                                                    (this.state.facture_Info.prenomError !== "") ? (<Form.Label style={{ display: "block" }} className="invalid-feedback">{this.state.facture_Info.prenomError}</Form.Label>) : ""
                                                 }
                                             </Form.Group >
                                         </Col>
@@ -254,7 +253,7 @@ class Checkout extends Component {
                                                     placeholder="Nom"
                                                     onChange={this.handelFactureInfoNom}/>
                                                 {
-                                                    (this.state.facture_Info.nomError != "") ? (<Form.Label style={{ display: "block" }} className="invalid-feedback">{this.state.facture_Info.nomError}</Form.Label>) : ""
+                                                    (this.state.facture_Info.nomError !== "") ? (<Form.Label style={{ display: "block" }} className="invalid-feedback">{this.state.facture_Info.nomError}</Form.Label>) : ""
                                                 }
                                             </Form.Group >
                                         </Col>
@@ -266,7 +265,7 @@ class Checkout extends Component {
                                                     onChange={this.handelFactureInfoEmail}
                                                     placeholder="E-mail"/>
                                                 {
-                                                    (this.state.facture_Info.emailError != "") ? (<Form.Label style={{ display: "block" }} className="invalid-feedback">{this.state.facture_Info.emailError}</Form.Label>) : ""
+                                                    (this.state.facture_Info.emailError !== "") ? (<Form.Label style={{ display: "block" }} className="invalid-feedback">{this.state.facture_Info.emailError}</Form.Label>) : ""
                                                 }
                                             </Form.Group >
                                         </Col>
@@ -285,7 +284,7 @@ class Checkout extends Component {
                                                     onChange={this.handelFactureInfoPhone}
                                                     placeholder="Téléphone"/>
                                                 {
-                                                    (this.state.facture_Info.phoneError != "") ? (<Form.Label style={{ display: "block" }} className="invalid-feedback">{this.state.facture_Info.phoneError}</Form.Label>) : ""
+                                                    (this.state.facture_Info.phoneError !== "") ? (<Form.Label style={{ display: "block" }} className="invalid-feedback">{this.state.facture_Info.phoneError}</Form.Label>) : ""
                                                 }
                                             </Form.Group >
                                         </Col>
@@ -301,7 +300,7 @@ class Checkout extends Component {
                                 {
                                     (this.state.reservation != null) ? 
                                     this.state.reservation.map((item, i) => {
-                                        return ((item.information_voyageur != null) ? item.information_voyageur.map((itemVoy, j) => {
+                                        return ((item.information_voyageur !== null) ? item.information_voyageur.map((itemVoy, j) => {
                                             return (
                                                 <div Key={i} className="mr-3 ml-3">
                                                     
@@ -326,7 +325,7 @@ class Checkout extends Component {
                                                                     placeholder="Prénom"
                                                                     value={itemVoy.prenom}/>
                                                                 {
-                                                                    (itemVoy.prenomError != "") ? (<Form.Label style={{ display: "block" }} className="invalid-feedback">{itemVoy.prenomError}</Form.Label>) : ""
+                                                                    (itemVoy.prenomError !== "") ? (<Form.Label style={{ display: "block" }} className="invalid-feedback">{itemVoy.prenomError}</Form.Label>) : ""
                                                                 }
                                                             </Form.Group >
                                                         </Col>
@@ -338,7 +337,7 @@ class Checkout extends Component {
                                                                     placeholder="Nom"
                                                                     value={itemVoy.nom}/>
                                                                 {
-                                                                    (itemVoy.nomError != "") ? (<Form.Label style={{ display: "block" }} className="invalid-feedback">{itemVoy.nomError}</Form.Label>) : ""
+                                                                    (itemVoy.nomError !== "") ? (<Form.Label style={{ display: "block" }} className="invalid-feedback">{itemVoy.nomError}</Form.Label>) : ""
                                                                 }
                                                             </Form.Group >
                                                         </Col>
@@ -361,12 +360,12 @@ class Checkout extends Component {
                                     <label className={offerStyle.spaceShowVoyageurTitle}>Voyageurs</label>
                                     <div className="p-3" style={{backgroundColor: "#dddcdc", borderRadius: "5px", fontFamily: "Poppins"}}>
                                         {
-                                            (this.state.reservation != null) ? 
+                                            (this.state.reservation !== null) ? 
                                             this.state.reservation.map((item, i) => {
                                                 return (
-                                                    (item.information_voyageur != null) ?
+                                                    (item.information_voyageur !== null) ?
                                                         item.information_voyageur.map((itemVoy, j) => {
-                                                            if(itemVoy.civilite != "" || itemVoy.nom != "" || itemVoy.prenom != ""){
+                                                            if(itemVoy.civilite !== "" || itemVoy.nom !== "" || itemVoy.prenom !== ""){
                                                                 return (<p>{itemVoy.civilite} {itemVoy.prenom} {itemVoy.nom}</p>)
                                                             }
                                                         }): ""
