@@ -17,13 +17,13 @@ function ProgramTab(props) {
                                 return(
                                 <div key={i} className="row">
                                     <div className="col-md-1">
-                                        <h2 className="nbrJour">{item.jour_nbr}</h2>
+                                        <h2 className="nbrJour">{item.nbr_jour}</h2>
                                         <span className="separator">
                                             <span className="separatorContent"></span>
                                         </span>
                                     </div>
                                     <div className="col-md-11">
-                                        <h2 className="jourTitle">Jour {item.jour_nbr}: {item.jour_title}</h2>
+                                        <h2 className="jourTitle">Jour {item.nbr_jour}: {item.jour_title}</h2>
                                         <p dangerouslySetInnerHTML={{ __html: item.description }}></p>
                                     </div>
                                 </div>

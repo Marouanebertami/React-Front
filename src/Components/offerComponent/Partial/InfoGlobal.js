@@ -40,7 +40,7 @@ function InfoGlobal(props) {
                                     villes_depart.map(function(item, i){
                                         return(
                                             <div key={i} className="col-md-6">
-                                                <p><IoIosCheckmarkCircle style={{color: "rgb(63, 208, 212)", marginRight: "5px"}} /> {item}</p>
+                                                <p><IoIosCheckmarkCircle style={{color: "rgb(63, 208, 212)", marginRight: "5px"}} /> {item.trim()}</p>
                                             </div>
                                         )
                                     })
@@ -60,7 +60,7 @@ function InfoGlobal(props) {
                                     inclus.map(function(item, i){
                                         return(
                                             <div key={i} className="col-md-6">
-                                                <p><IoIosCheckmarkCircle style={{color: "rgb(63, 208, 212)", marginRight: "5px"}} /> {item.inclu}</p>
+                                                <p><IoIosCheckmarkCircle style={{color: "rgb(63, 208, 212)", marginRight: "5px"}} /> {item.trim()}</p>
                                             </div>
                                         )
                                     })

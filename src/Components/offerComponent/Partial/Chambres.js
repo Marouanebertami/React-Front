@@ -32,7 +32,7 @@ function Chambres(props) {
                     </select>
                 </div>
             </div>
-            <h3>Supplement</h3>
+            {/* <h3>Supplement</h3> */}
         </div>
     )
 }
