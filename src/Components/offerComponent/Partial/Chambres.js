@@ -31,6 +31,35 @@ function Chambres(props) {
                         <option value="3">3</option>
                     </select>
                 </div>
+                {
+                    props.doubleOrTriple ? 
+                        <div className="form-group col-md-3" id="premierEnfant" style={{marginBottom: "2rem",marginTop: "1rem"}}>
+                            <label style={{fontFamily: "Poppins", fontWeight: "700", color: "#fff"}}>Premier Enfant:</label>
+                            <select className="form-control" style={{borderRadius: 0}} onChange={(e) => props.changeSelect(e, 'premierEnfant')}>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </div>
+                    : ""
+                }
+                <div className="form-group col-md-3"></div>
+                <div className="form-group col-md-3"></div>
+                <div className="form-group col-md-3"></div>
+                {
+                    props.doubleOrTriple ? 
+                        <div className="form-group col-md-3" id="deuxiemeEnfant" style={{marginBottom: "2rem",marginTop: "1rem"}}>
+                            <label style={{fontFamily: "Poppins", fontWeight: "700", color: "#fff"}}>Deuxieme Enfant:</label>
+                            <select className="form-control" style={{borderRadius: 0}} onChange={(e) => props.changeSelect(e, 'dexiemeEnfant')}>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </div>
+                    : ""
+                }
+                
+                
             </div>
             {/* <h3>Supplement</h3> */}
         </div>

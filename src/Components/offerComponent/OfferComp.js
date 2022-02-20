@@ -121,14 +121,12 @@ function mapStateToProps(state, props) {
                 offerSelected,
                 isFetchingOfferSelect
             };
-            break;
         case "destination":
             const { isFetchingDestinationById, destinationById } = reducersData
             return {
                 destinationById,
                 isFetchingDestinationById
             };
-            break;
     }
 }
 

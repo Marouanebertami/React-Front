@@ -191,20 +191,8 @@ class Checkout extends Component {
             }}/>)
         }
 
-        const override = `
-                display: block;
-                margin: 0 auto;
-                border-color: red;
-            `;
-        const loading = true;
-        const color = "#000"
         return (
             <Container fluid>
-                {/* <div style={{position: "fixed", height: "100%", width: "100%", top: "0"}}>
-                    <div style={{position: "relative", height: "100%"}}>
-                        <ClipLoader color={color} loading={loading} css={override} size={150} />
-                    </div>
-                </div> */}
                 <div className={offerStyle.offerVueParent} style={{backgroundImage: `url(http://127.0.0.1:8000/images/checkout.jpg)`}}>
                     <div className={offerStyle.offerTitleParent}>
                         <h2 className={offerStyle.offerTitle}>Checkout</h2>

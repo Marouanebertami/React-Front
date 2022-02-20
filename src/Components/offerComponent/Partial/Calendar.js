@@ -27,7 +27,8 @@ class Calendar extends Component {
         prixBebe: null,
         reservationItems: [],
         totalMount: false,
-        redirectToForm: false
+        redirectToForm: false,
+        doubleOrTriple:false
     };
 
     //get Days in Month
@@ -128,32 +129,53 @@ class Calendar extends Component {
     countMount = (name, nbr) => {
         switch(name){
             case "single":
-                return this.state.prixSingle * nbr
-                break;
+                return this.state.prixSingle * nbr;
             case "double":
-                return this.state.prixDouble * nbr
-                break;
+                return this.state.prixDouble * nbr;
             case "triple":
-                return this.state.prixTriple * nbr
-                break;
+                return this.state.prixTriple * nbr;
+            case "premierEnfant":
+                return this.state.prixPremierEnfant * nbr;
+            case "dexiemeEnfant":
+                return this.state.prixDeuxiemeEnfant * nbr;
         }
     }
 
     getMountType = (name) => {
         switch(name){
             case "single":
-                return this.state.prixSingle
-                break;
+                return this.state.prixSingle;
             case "double":
-                return this.state.prixDouble
-                break;
+                return this.state.prixDouble;
             case "triple":
-                return this.state.prixTriple
-                break;
+                return this.state.prixTriple;
+            case "premierEnfant":
+                return this.state.prixPremierEnfant;
+            case "dexiemeEnfant":
+                return this.state.prixDeuxiemeEnfant;
         }
     }
 
     onChangeSelect = (e, name) => {
+
+        let hasDoubleOrTriple = false;
+        if(this.state.reservationItems != null && this.state.reservationItems != undefined 
+            && this.state.reservationItems.length != 0){
+            this.state.reservationItems.map(item => {
+                if(item.name === "double" || item.name === "triple"){
+                    hasDoubleOrTriple = true;
+                }
+            });
+        }
+        
+        if(!hasDoubleOrTriple || this.state.reservationItems.length == 0){
+            if((name === "double" || name === "triple") && e.target.value > 0){
+                this.setState({doubleOrTriple: true});
+            }else{
+                this.setState({doubleOrTriple: false});
+            }
+        }
+
         let reservationSelected = this.state.reservationItems.find(item => {
             return item.name == name
         });
@@ -176,6 +198,10 @@ class Calendar extends Component {
             }
         }
 
+        if(this.state.reservationItems.length == 0){
+            this.setState({doubleOrTriple: false});
+        }
+        
         if(this.state.reservationItems.length == 0){
             this.setState({totalMount: false});
         }else{
@@ -299,7 +325,7 @@ class Calendar extends Component {
                     
                     <Chambres single={this.state.prixSingle} double={this.state.prixDouble} triple={this.state.prixTriple} 
                         premierEnfant={this.state.prixPremierEnfant} deuxiemeEnfant={this.state.prixDeuxiemeEnfant} 
-                        bebe={this.state.prixBebe} changeSelect={this.onChangeSelect}/>
+                        bebe={this.state.prixBebe} changeSelect={this.onChangeSelect} doubleOrTriple={this.state.doubleOrTriple}/>
                 )}
                 
                 {
