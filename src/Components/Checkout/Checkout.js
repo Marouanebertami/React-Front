@@ -55,7 +55,7 @@ class Checkout extends Component {
 
     // Create une fonction pour validation des inputs
     validation = (state) => {
-        let newState = Object.assign({}, this.state)
+        // let newState = Object.assign({}, this.state)
         
         var hasError = false;
         if(state.reservation != null){
@@ -75,9 +75,9 @@ class Checkout extends Component {
                         }else{
                             info.prenomError = "";
                         }
-                    })
+                    });
                 }
-            })
+            });
         }
 
         if(state.facture_Info != null){
@@ -215,9 +215,9 @@ class Checkout extends Component {
                                                 <Form.Control as="select"
                                                     defaultValue={this.state.facture_Info.civilite}
                                                     onChange={this.handelFactureInfoCivilite}>
-                                                    <option value="">Civilité</option>
-                                                    <option value="M.">M.</option>
-                                                    <option value="Mme">Mme</option>
+                                                    <option key="0" value="">Civilité</option>
+                                                    <option key="1" value="M.">M.</option>
+                                                    <option key="2" value="Mme">Mme</option>
                                                 </Form.Control>
                                             </Form.Group >
                                         </Col>
@@ -297,11 +297,12 @@ class Checkout extends Component {
                                                             <Form.Group >
                                                                 <Form.Label>Civilité</Form.Label>
                                                                 <Form.Control as="select"
+                                                                    key={j}
                                                                     defaultValue={itemVoy.civilite}
                                                                     onChange={(e) => this.handelVayageurCivilite(e, i, j)}>
-                                                                    <option value="">Civilité</option>
-                                                                    <option value="M.">M.</option>
-                                                                    <option value="Mme">Mme</option>
+                                                                    <option key="0" value="">Civilité</option>
+                                                                    <option key="1" value="M.">M.</option>
+                                                                    <option key="2" value="Mme">Mme</option>
                                                                 </Form.Control>
                                                             </Form.Group >
                                                         </Col>
@@ -309,6 +310,7 @@ class Checkout extends Component {
                                                             <Form.Group >
                                                                 <Form.Label>Prénom*</Form.Label>
                                                                 <Form.Control type="text"
+                                                                    key={j}
                                                                     onChange={(e) => this.handelVayageurPrenom(e, i, j)}
                                                                     placeholder="Prénom"
                                                                     value={itemVoy.prenom}/>
@@ -321,6 +323,7 @@ class Checkout extends Component {
                                                             <Form.Group >
                                                                 <Form.Label>Nom*</Form.Label>
                                                                 <Form.Control type="text"
+                                                                    key={j}
                                                                     onChange={(e) => this.handelVayageurNom(e, i, j)}
                                                                     placeholder="Nom"
                                                                     value={itemVoy.nom}/>

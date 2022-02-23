@@ -233,7 +233,7 @@ class Calendar extends Component {
 
         let blanks = [];
         for (let i = 0; i < this.firstDayOfMonth(); i++) {
-            blanks.push(<td className="calendar-day empty">{""}</td>);
+            blanks.push(<td key={i} className="calendar-day empty">{""}</td>);
         }
 
         let daysReserve = [];
@@ -334,10 +334,10 @@ class Calendar extends Component {
                             <Table style={{color: "#fff"}}>
                                 <thead>
                                     <tr>
-                                        <th className="col-md-8">Description</th>
-                                        <th>Prix/Pers</th>
-                                        <th>Nombre Pres.</th>
-                                        <th>Total</th>
+                                        <th key="0" className="col-md-8">Description</th>
+                                        <th key="1">Prix/Pers</th>
+                                        <th key="2">Nombre Pres.</th>
+                                        <th key="3">Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -347,10 +347,10 @@ class Calendar extends Component {
                                                 this.state.reservationItems.map((item, i) => {
                                                     return (
                                                         <tr key={i}>
-                                                            <td>{item.name.toUpperCase()}</td>
-                                                            <td>{item.mountPerPerssen} <sup>MAD</sup></td>
-                                                            <td>x{item.nbr}</td>
-                                                            <td>{item.total} <sup>MAD</sup></td>
+                                                            <td key={i+0}>{item.name.toUpperCase()}</td>
+                                                            <td key={i+1}>{item.mountPerPerssen} <sup>MAD</sup></td>
+                                                            <td key={i+2}>x{item.nbr}</td>
+                                                            <td key={i+3}>{item.total} <sup>MAD</sup></td>
                                                         </tr>
                                                     )
                                                 })
