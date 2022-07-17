@@ -19,7 +19,7 @@ class Header extends Component {
 
     render = () => {
         const { logoUrl, isFetchingLogo } = this.props;
-        console.log(logoUrl)
+        
         return (
             <div className={headerStyle.header}>
                 <TopHeader />

@@ -28,8 +28,8 @@ function Offer({item}) {
                             {item.courte_description}
                         </p>
                         {   
-                            etoil.map(function(item, i){
-                                return(item)
+                            etoil.map(function(element){
+                                return(element)
                             })
                         }
                     </div>

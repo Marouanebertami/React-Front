@@ -10,7 +10,7 @@ import '../ComponentStyle/offer.css';
 import { fetchOfferSelectedData, fetchDestinationData } from '../../store/Reducers/actions'
 import { IoIosCalendar, IoIosListBox, IoIosCheckmarkCircle, IoIosStar } from "react-icons/io"
 
-class OfferComp extends Component {
+class OfferCompponent extends Component {
     constructor(props) {
         super(props);
     }
@@ -130,4 +130,4 @@ function mapStateToProps(state, props) {
     }
 }
 
-export default connect(mapStateToProps)(OfferComp)
+export default connect(mapStateToProps)(OfferCompponent)

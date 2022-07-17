@@ -253,7 +253,9 @@ function receiveLogoUrlError(error){
 
 export function fetchLogoUrl() {
     return dispatch => {
+        console.log("start logo")
         dispatch(requestLogoUrl());
+        console.log("End logo")
         return API.get('/getLogo')
             .then(res => res)
             .then(json => dispatch(receiveLogoUrl(json)))

@@ -23,7 +23,7 @@ function ProgramTab(props) {
                                         </span>
                                     </div>
                                     <div className="col-md-11">
-                                        <h2 className="jourTitle">Jour {item.nbr_jour}: {item.jour_title}</h2>
+                                        <h2 className="jourTitle">Jour {item.nbr_jour}: {item.titre}</h2>
                                         <p dangerouslySetInnerHTML={{ __html: item.description }}></p>
                                     </div>
                                 </div>

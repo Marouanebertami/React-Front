@@ -1,0 +1,33 @@
+.buttonConfirm{
+    background: #e67e22 !important;
+    border-color: #f39c12 !important;
+    width: 100%;
+    font-family: "Poppins" !important;
+    font-weight: 500 !important;
+    border-radius: 0 !important;
+}
+
+.spanNbr{
+    background-color: #f39c12;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 100%;
+}
+
+.formCheckOut{
+    font-family: "Poppins" !important;
+}
+
+.formInputs{
+    border-radius: 0 !important;
+    border-color: #f39c12  !important;
+    color: #f39c12  !important;
+}
+
+.formInputs:focus{
+    box-shadow: 0 0 0 0.2rem #f39c1252 !important;
+}
+
+.formInputs::placeholder {
+    color: #f39c12  !important;
+}

@@ -48,11 +48,9 @@ class Calendar extends Component {
 
     // get premier jour du mois 
     firstDayOfMonth = () => {
-        let dateObject = this.state.dateObject;
-        let firstDay = moment(dateObject)
+        return moment(this.state.dateObject)
             .startOf("month")
-            .format("d"); // Day of week 0...1..5...6
-        return firstDay;
+            .format("d");
     };
 
     // get Mois
@@ -83,7 +81,7 @@ class Calendar extends Component {
 
     onNext = () => {
         let curr = "";
-        if (this.state.showMonthTable == true) {
+        if (this.state.showMonthTable) {
             curr = "year";
         } else {
             curr = "month";
@@ -227,8 +225,8 @@ class Calendar extends Component {
                                     }}/>)
         }
 
-        let weekdayshortname = this.weekdayshort.map(day => {
-            return <th key={day} className="text-center text-capitalize">{day}</th>;
+        let weekdayshortname = this.weekdayshort.map((day, i) => {
+            return <th key={day+i} className="text-center text-capitalize">{day}</th>;
         });
 
         let blanks = [];

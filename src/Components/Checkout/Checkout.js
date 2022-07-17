@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
-import { Container, Row, Col,
-        Form, Table, Button } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import offerStyle from '../ComponentStyle/offers.module.css';
 import API from '../../apiUsers';
+import { CheckOutForm } from './Forms';
 
 class Checkout extends Component {
 
@@ -47,75 +47,16 @@ class Checkout extends Component {
                     }
                 }
                 item["information_voyageur"] = voyageurs_info;
+                return null;
             });
         }
 
         this.setState(newState)
+        console.log(newState)
     }
 
     // Create une fonction pour validation des inputs
-    validation = (state) => {
-        // let newState = Object.assign({}, this.state)
-        
-        var hasError = false;
-        if(state.reservation != null){
-            state.reservation.map(item => {
-                if(item.information_voyageur != null){
-                    item.information_voyageur.map(info => {
-                        if(info.nom === "" || info.nom === undefined){
-                            info.nomError = "Nom est Obligatoire";
-                            hasError = true;
-                        }else{
-                            info.nomError = "";
-                        }
-
-                        if(info.prenom === "" || info.prenom === undefined){
-                            info.prenomError = "Prenom est Obligatoire";
-                            hasError = true;
-                        }else{
-                            info.prenomError = "";
-                        }
-                    });
-                }
-            });
-        }
-
-        if(state.facture_Info != null){
-            if(state.facture_Info.nom === "" || state.facture_Info.nom === undefined){
-                state.facture_Info.nomError = "Nom est Obligatoire";
-                hasError = true;
-            }else{
-                state.facture_Info.nomError = "";
-            }
-
-            if(state.facture_Info.prenom === "" || state.facture_Info.prenom === undefined){
-                state.facture_Info.prenomError = "Prenom est Obligatoire";
-                hasError = true;
-            }else{
-                state.facture_Info.prenomError = "";
-            }
-
-            if(state.facture_Info.email === "" || state.facture_Info.email === undefined){
-                state.facture_Info.emailError = "Email est Obligatoire";
-                hasError = true;
-            }else{
-                state.facture_Info.prenomError = "";
-            }
-
-            if(state.facture_Info.phone === "" || state.facture_Info.phone === undefined){
-                state.facture_Info.phoneError = "Téléphone est Obligatoire";
-                hasError = true;
-            }else{
-                state.facture_Info.prenomError = "";
-            }
-        }
-
-        this.setState(state)
-        if(hasError){
-            return false;
-        }
-        return true;
-    }
+    
 
     handelSubmit = (e) => {
         e.preventDefault();
@@ -183,6 +124,10 @@ class Checkout extends Component {
         this.setState(newState);
     }
 
+    handelSubmitFormTest = (data) => {
+        console.log(data)
+    }
+
     render() {
 
         if(this.props.location.state === undefined){
@@ -199,211 +144,7 @@ class Checkout extends Component {
                     </div>
                 </div>
                 <Container className="mt-5 mb-5">
-                    <Form onSubmit={(e) => this.handelSubmit(e)}>
-                        <Row>
-                            <Col md={8}>
-                                <Col md={12}>
-                                    <h5 className={offerStyle.checkoutTitles}>
-                                        <span className={offerStyle.checkoutTitlesSpan}>1</span> Informations de facturation
-                                    </h5>
-                                </Col>
-                                <div className="mr-3 ml-3">
-                                    <Row className="mt-5">
-                                        <Col md={6}>
-                                            <Form.Group >
-                                                <Form.Label>Civilité</Form.Label>
-                                                <Form.Control as="select"
-                                                    defaultValue={this.state.facture_Info.civilite}
-                                                    onChange={this.handelFactureInfoCivilite}>
-                                                    <option key="0" value="">Civilité</option>
-                                                    <option key="1" value="M.">M.</option>
-                                                    <option key="2" value="Mme">Mme</option>
-                                                </Form.Control>
-                                            </Form.Group >
-                                        </Col>
-                                        <Col md={6}>
-                                            <Form.Group >
-                                                <Form.Label>Prénom*</Form.Label>
-                                                <Form.Control type="text" 
-                                                    value={this.state.facture_Info.prenom}
-                                                    onChange={this.handelFactureInfoPrenom}
-                                                    placeholder="Prénom"/>
-                                                {
-                                                    (this.state.facture_Info.prenomError !== "") ? (<Form.Label style={{ display: "block" }} className="invalid-feedback">{this.state.facture_Info.prenomError}</Form.Label>) : ""
-                                                }
-                                            </Form.Group >
-                                        </Col>
-                                        <Col md={6}>
-                                            <Form.Group >
-                                                <Form.Label>Nom*</Form.Label>
-                                                <Form.Control type="text" 
-                                                    value={this.state.facture_Info.nom} 
-                                                    placeholder="Nom"
-                                                    onChange={this.handelFactureInfoNom}/>
-                                                {
-                                                    (this.state.facture_Info.nomError !== "") ? (<Form.Label style={{ display: "block" }} className="invalid-feedback">{this.state.facture_Info.nomError}</Form.Label>) : ""
-                                                }
-                                            </Form.Group >
-                                        </Col>
-                                        <Col md={6}>
-                                            <Form.Group >
-                                                <Form.Label>E-mail*</Form.Label>
-                                                <Form.Control type="text"
-                                                    value={this.state.facture_Info.email}
-                                                    onChange={this.handelFactureInfoEmail}
-                                                    placeholder="E-mail"/>
-                                                {
-                                                    (this.state.facture_Info.emailError !== "") ? (<Form.Label style={{ display: "block" }} className="invalid-feedback">{this.state.facture_Info.emailError}</Form.Label>) : ""
-                                                }
-                                            </Form.Group >
-                                        </Col>
-                                        <Col md={6}>
-                                            <Form.Group >
-                                                <Form.Label>Confirmer E-mail</Form.Label>
-                                                <Form.Control type="text"
-                                                    placeholder="Confirmer E-mail"/>
-                                            </Form.Group >
-                                        </Col>
-                                        <Col md={6}>
-                                            <Form.Group >
-                                                <Form.Label>Téléphone*</Form.Label>
-                                                <Form.Control type="text"
-                                                    value={this.state.facture_Info.phone}
-                                                    onChange={this.handelFactureInfoPhone}
-                                                    placeholder="Téléphone"/>
-                                                {
-                                                    (this.state.facture_Info.phoneError !== "") ? (<Form.Label style={{ display: "block" }} className="invalid-feedback">{this.state.facture_Info.phoneError}</Form.Label>) : ""
-                                                }
-                                            </Form.Group >
-                                        </Col>
-                                    </Row>
-                                    
-                                </div>
-                                <hr/>
-                                <Col md={12} className="mt-4">
-                                    <h5 className={offerStyle.checkoutTitles}>
-                                        <span className={offerStyle.checkoutTitlesSpan}>2</span> Informations des Voyageurs
-                                    </h5>
-                                </Col>
-                                {
-                                    (this.state.reservation != null) ? 
-                                    this.state.reservation.map((item, i) => {
-                                        return ((item.information_voyageur !== null) ? item.information_voyageur.map((itemVoy, j) => {
-                                            return (
-                                                <div Key={i} className="mr-3 ml-3">
-                                                    
-                                                    <Row className="mt-5">
-                                                        <Col md={4}>
-                                                            <Form.Group >
-                                                                <Form.Label>Civilité</Form.Label>
-                                                                <Form.Control as="select"
-                                                                    key={j}
-                                                                    defaultValue={itemVoy.civilite}
-                                                                    onChange={(e) => this.handelVayageurCivilite(e, i, j)}>
-                                                                    <option key="0" value="">Civilité</option>
-                                                                    <option key="1" value="M.">M.</option>
-                                                                    <option key="2" value="Mme">Mme</option>
-                                                                </Form.Control>
-                                                            </Form.Group >
-                                                        </Col>
-                                                        <Col md={4}>
-                                                            <Form.Group >
-                                                                <Form.Label>Prénom*</Form.Label>
-                                                                <Form.Control type="text"
-                                                                    key={j}
-                                                                    onChange={(e) => this.handelVayageurPrenom(e, i, j)}
-                                                                    placeholder="Prénom"
-                                                                    value={itemVoy.prenom}/>
-                                                                {
-                                                                    (itemVoy.prenomError !== "") ? (<Form.Label style={{ display: "block" }} className="invalid-feedback">{itemVoy.prenomError}</Form.Label>) : ""
-                                                                }
-                                                            </Form.Group >
-                                                        </Col>
-                                                        <Col md={4}>
-                                                            <Form.Group >
-                                                                <Form.Label>Nom*</Form.Label>
-                                                                <Form.Control type="text"
-                                                                    key={j}
-                                                                    onChange={(e) => this.handelVayageurNom(e, i, j)}
-                                                                    placeholder="Nom"
-                                                                    value={itemVoy.nom}/>
-                                                                {
-                                                                    (itemVoy.nomError !== "") ? (<Form.Label style={{ display: "block" }} className="invalid-feedback">{itemVoy.nomError}</Form.Label>) : ""
-                                                                }
-                                                            </Form.Group >
-                                                        </Col>
-                                                    </Row>
-                                                    
-                                                </div>
-                                            )
-                                        }): "")
-                                        
-                                    }) : ""
-                                }
-                            </Col>
-                            <Col md={4}>
-                                <Col md={12}>
-                                    <h5 className={offerStyle.checkoutTitles}>
-                                        <span className={offerStyle.checkoutTitlesSpan}>3</span> Résumé de la réservation
-                                    </h5>
-                                </Col>
-                                <Col md={12} className="m-0 mt-5 mb-5">
-                                    <label className={offerStyle.spaceShowVoyageurTitle}>Voyageurs</label>
-                                    <div className="p-3" style={{backgroundColor: "#dddcdc", borderRadius: "5px", fontFamily: "Poppins"}}>
-                                        {
-                                            (this.state.reservation !== null) ? 
-                                            this.state.reservation.map((item, i) => {
-                                                return (
-                                                    (item.information_voyageur !== null) ?
-                                                        item.information_voyageur.map((itemVoy, j) => {
-                                                            if(itemVoy.civilite !== "" || itemVoy.nom !== "" || itemVoy.prenom !== ""){
-                                                                return (<p>{itemVoy.civilite} {itemVoy.prenom} {itemVoy.nom}</p>)
-                                                            }
-                                                        }): ""
-                                                    
-                                                )
-                                            }) : ""
-                                        }
-                                    </div>
-                                </Col>
-                                <Col md={12} className="m-0 mt-5 mb-5">
-                                    <label className={offerStyle.spaceShowVoyageurTitle}>information de facturation</label>
-                                    <div className="p-3" style={{backgroundColor: "#dddcdc", borderRadius: "5px", fontFamily: "Poppins"}}>
-                                        <p>{this.state.facture_Info.civilite} {this.state.facture_Info.prenom} {this.state.facture_Info.nom}</p>
-                                        <p>{this.state.facture_Info.email}</p>
-                                        <p>{this.state.facture_Info.phone}</p>
-                                    </div>
-                                </Col>
-                                <Col md={12} className="m-0 mt-5 mb-5">
-                                    <div className="p-3" style={{backgroundColor: "#dddcdc", borderRadius: "5px", fontFamily: "Poppins"}}>
-                                        <p>Détails Résèrvation:</p>
-                                        <Table>
-                                            <thead>
-                                                <tr>
-                                                    <th className="col-md-8">Description</th>
-                                                    <th>Prix</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {
-                                                    (this.state.reservation != null) ? 
-                                                    this.state.reservation.map((item, i) => {
-                                                        return (<tr key={i}>
-                                                                        <td>{item.name} pour {item.nbr} Pers</td>
-                                                                        <td>{item.total} <sup>MAD</sup></td>
-                                                                    </tr>)
-                                                    }) : ""
-                                                }
-                                            </tbody>
-                                        </Table>
-                                    </div>
-                                </Col>
-                                <Col md={12}>
-                                    <Button variant="primary" type="submit" className={offerStyle.btnReservation}>Confirmer Resérvation</Button>
-                                </Col>
-                            </Col>
-                        </Row>
-                    </Form>
+                    <CheckOutForm sendForm={this.handelSubmitFormTest} reservation={this.state.reservation} id_tarif={this.state.id_tarif} />
                 </Container>
             </Container>
         )
