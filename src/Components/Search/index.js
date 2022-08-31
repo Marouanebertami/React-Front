@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Container, Row, Col,
     Form, Button } from 'react-bootstrap';
-import SearchStyle from './ComponentStyle/search.module.css';
+import SearchStyle from './search.module.css';
 import { Redirect } from "react-router-dom";
 import { FaCalendarAlt, FaLocationArrow, FaNetworkWired, FaSearchLocation } from "react-icons/fa"
 
@@ -9,9 +9,9 @@ class Search extends Component {
 
     state = {
         search: false,
-        where: null,
-        month: null,
-        type: null
+        where: "",
+        month: "",
+        type: ""
     }
 
     handelWhere = (e) => {

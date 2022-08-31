@@ -2,15 +2,14 @@ import React, { Component } from 'react'
 import offerStyle from '../ComponentStyle/offers.module.css';
 import { connect } from 'react-redux'
 import { Container, Tabs, Tab, Row,
-    Form, Button } from 'react-bootstrap'
-import { IoIosCalendar, IoIosListBox, IoIosCheckmarkCircle, IoIosStar, IoMdPin } from "react-icons/io"
-import Offer from '../Offer'
-import { Col } from 'react-bootstrap'
+    Form, Button, Col } from 'react-bootstrap'
+// import { IoIosCalendar, IoIosListBox, IoIosCheckmarkCircle, IoIosStar, IoMdPin } from "react-icons/io"
+// import Offer from '../Offer'
 import { FaCalendarAlt, FaLocationArrow, FaStar } from "react-icons/fa"
 import { Link } from "react-router-dom";
 import { fetchSearchData } from '../../store/Reducers/actions'
 import ReactPaginate from 'react-paginate'
-import SearchComponent from '../ComponentStyle/searchComponent.module.css'
+import SearchComponent from './searchComponent.module.css'
 
 export class Search extends Component {
 

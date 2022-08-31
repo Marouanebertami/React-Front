@@ -14,7 +14,7 @@ import EventAvailableOutlinedIcon from '@mui/icons-material/EventAvailableOutlin
 import BookmarkAddOutlinedIcon from '@mui/icons-material/BookmarkAddOutlined';
 import FeedbackOutlinedIcon from '@mui/icons-material/FeedbackOutlined';
 
-class OfferComp extends Component {
+class OfferCompponent extends Component {
     constructor(props) {
         super(props);
     }
@@ -134,4 +134,4 @@ function mapStateToProps(state, props) {
     }
 }
 
-export default connect(mapStateToProps)(OfferComp)
+export default connect(mapStateToProps)(OfferCompponent)

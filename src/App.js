@@ -5,7 +5,7 @@ import Home from './Components/Home'
 import About from './Components/About'
 import Contact from './Components/Contact'
 import Footer from './Components/Shared/Footer'
-import OfferComp from './Components/offerComponent/OfferComp'
+import OfferComp from './Components/offerComponent'
 import SearchComponent from './Components/SearchComponent/Search'
 import Checkout from './Components/Checkout/Checkout'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
