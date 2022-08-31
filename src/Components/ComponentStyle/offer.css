@@ -45,6 +45,9 @@
   top: 4px;
   font-family: "Poppins";
   font-weight: 700;
+}
+
+.tab-pane p.tabPriceContent span{
   color: rgb(63, 208, 212);
 }
 

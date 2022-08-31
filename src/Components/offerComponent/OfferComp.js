@@ -9,6 +9,10 @@ import ProgramTab from './Partial/ProgramTab';
 import '../ComponentStyle/offer.css';
 import { fetchOfferSelectedData, fetchDestinationData } from '../../store/Reducers/actions'
 import { IoIosCalendar, IoIosListBox, IoIosCheckmarkCircle, IoIosStar } from "react-icons/io"
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import EventAvailableOutlinedIcon from '@mui/icons-material/EventAvailableOutlined';
+import BookmarkAddOutlinedIcon from '@mui/icons-material/BookmarkAddOutlined';
+import FeedbackOutlinedIcon from '@mui/icons-material/FeedbackOutlined';
 
 class OfferComp extends Component {
     constructor(props) {
@@ -43,15 +47,15 @@ class OfferComp extends Component {
 
                     <Container className="ContainerTabs">
                         <Tabs className={offerStyle.offerTabs} defaultActiveKey="information">
-                            <Tab tabClassName={offerStyle.offerTab} eventKey="information" title={<span><IoIosListBox /> <span className="spanTabTitle">{"Information"}</span></span>}>
+                            <Tab tabClassName={offerStyle.offerTab} eventKey="information" title={<span><InfoOutlinedIcon style={{ color: "rgb(63, 208, 212)", marginRight: "5px" }} /> <span className="spanTabTitle">{"Information"}</span></span>}>
                                 {/* get Global Information Component */}
                                 <InfoGlobal item={offerSelected} />
                             </Tab>
-                            <Tab tabClassName={offerStyle.offerTab} eventKey="program" title={<span><IoIosCalendar /> <span className="spanTabTitle">{"Program"}</span></span>}>
+                            <Tab tabClassName={offerStyle.offerTab} eventKey="program" title={<span><EventAvailableOutlinedIcon style={{ color: "rgb(63, 208, 212)", marginRight: "5px" }} /> <span className="spanTabTitle">{"Program"}</span></span>}>
                                 {/* get Program Component */}
                                 <ProgramTab programs={offerSelected.programs} />
                             </Tab>
-                            <Tab tabClassName={offerStyle.offerTab} eventKey="reserver" title={<span><IoIosCheckmarkCircle /> <span className="spanTabTitle">{"Réserver"}</span></span>}>
+                            <Tab tabClassName={offerStyle.offerTab} eventKey="reserver" title={<span><BookmarkAddOutlinedIcon style={{ color: "rgb(63, 208, 212)", marginRight: "5px" }} /> <span className="spanTabTitle">{"Réserver"}</span></span>}>
                                 <div className="row">
                                     {/* <div className="col-md-12"> */}
                                         <div className="col-md-12 pb-3">
@@ -62,7 +66,7 @@ class OfferComp extends Component {
                                     {/* </div> */}
                                 </div>
                             </Tab>
-                            <Tab tabClassName={offerStyle.offerTab} eventKey="test02" title={<span><IoIosStar /> <span className="spanTabTitle">{"Reviews"}</span></span>}>
+                            <Tab tabClassName={offerStyle.offerTab} eventKey="test02" title={<span><FeedbackOutlinedIcon style={{ color: "rgb(63, 208, 212)", marginRight: "5px" }} /> <span className="spanTabTitle">{"Reviews"}</span></span>}>
                                 test test01
                             </Tab>
                         </Tabs>
