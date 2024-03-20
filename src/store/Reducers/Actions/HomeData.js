@@ -25,10 +25,8 @@ function receiveOfferError(error){
 }
 
 export function fetchOfferData() {
-    console.log("start home data")
     return dispatch => {
         dispatch(requestOfferData());
-        console.log("end home data")
         return API.get('/getHomeData')
             .then(res => res)
             .then(json => dispatch(receiveOfferData(json)))

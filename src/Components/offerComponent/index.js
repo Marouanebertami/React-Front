@@ -1,22 +1,25 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import { Container, Tabs, Tab } from 'react-bootstrap'
 import offerStyle from '../ComponentStyle/offers.module.css';
 import InfoGlobal from './Partial/InfoGlobal';
-import Calendar from './Partial/Calendar';
+// import Calendar from './Partial/Calendar';
 import ProgramTab from './Partial/ProgramTab';
 import '../ComponentStyle/offer.css';
-import { fetchOfferSelectedData, fetchDestinationData } from '../../store/Reducers/actions'
-import { IoIosCalendar, IoIosListBox, IoIosCheckmarkCircle, IoIosStar } from "react-icons/io"
+import { fetchOfferSelectedData } from '../../store/Reducers/Actions/OfferAction/index.js'
+import { fetchDestinationData } from '../../store/Reducers/actions'
+// import { IoIosCalendar, IoIosListBox, IoIosCheckmarkCircle, IoIosStar } from "react-icons/io"
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import EventAvailableOutlinedIcon from '@mui/icons-material/EventAvailableOutlined';
-import BookmarkAddOutlinedIcon from '@mui/icons-material/BookmarkAddOutlined';
+// import BookmarkAddOutlinedIcon from '@mui/icons-material/BookmarkAddOutlined';
 import FeedbackOutlinedIcon from '@mui/icons-material/FeedbackOutlined';
+import {Helmet} from "react-helmet";
 
 class OfferCompponent extends Component {
     constructor(props) {
         super(props);
+        console.log(props.is_loading);
     }
     
     componentDidMount = async () => {
@@ -41,37 +44,30 @@ class OfferCompponent extends Component {
                     <div className={offerStyle.offerVueParent} style={{backgroundImage: `url(${offerSelected.image_url})`}}>
                         <div className={offerStyle.offerTitleParent}>
                             <span className={offerStyle.offerTopTitle}>Amazing Tour</span>
-                            <h2 className={offerStyle.offerTitle}>{ offerSelected.titre }</h2>
+                            <h1 className={offerStyle.offerTitle}>{ offerSelected.titre }</h1>
                         </div>
                     </div>
 
                     <Container className="ContainerTabs">
                         <Tabs className={offerStyle.offerTabs} defaultActiveKey="information">
-                            <Tab tabClassName={offerStyle.offerTab} eventKey="information" title={<span><InfoOutlinedIcon style={{ color: "rgb(63, 208, 212)", marginRight: "5px" }} /> <span className="spanTabTitle">{"Information"}</span></span>}>
+                            <Tab tabClassName={offerStyle.offerTab} eventKey="information" title={<span><InfoOutlinedIcon style={{ color: "rgb(240 101 36)", marginRight: "5px" }} /> <span className="spanTabTitle">{"Information"}</span></span>}>
                                 {/* get Global Information Component */}
                                 <InfoGlobal item={offerSelected} />
                             </Tab>
-                            <Tab tabClassName={offerStyle.offerTab} eventKey="program" title={<span><EventAvailableOutlinedIcon style={{ color: "rgb(63, 208, 212)", marginRight: "5px" }} /> <span className="spanTabTitle">{"Program"}</span></span>}>
+                            <Tab tabClassName={offerStyle.offerTab} eventKey="program" title={<span><EventAvailableOutlinedIcon style={{ color: "rgb(240 101 36)", marginRight: "5px" }} /> <span className="spanTabTitle">{"Program"}</span></span>}>
                                 {/* get Program Component */}
                                 <ProgramTab programs={offerSelected.programs} />
                             </Tab>
-                            <Tab tabClassName={offerStyle.offerTab} eventKey="reserver" title={<span><BookmarkAddOutlinedIcon style={{ color: "rgb(63, 208, 212)", marginRight: "5px" }} /> <span className="spanTabTitle">{"Réserver"}</span></span>}>
-                                <div className="row">
-                                    {/* <div className="col-md-12"> */}
-                                        <div className="col-md-12 pb-3">
-                                            <h4 className="tabTitleProgramme pb-2">Tarif & Disponibilité</h4>
-                                            <h6 className="tabDescriptionReserver">Sélectionnez une date de départ dans le calendrier ci-dessous.</h6>
-                                        </div>
-                                        <Calendar tarifs={offerSelected.tarifs} />
-                                    {/* </div> */}
-                                </div>
-                            </Tab>
-                            <Tab tabClassName={offerStyle.offerTab} eventKey="test02" title={<span><FeedbackOutlinedIcon style={{ color: "rgb(63, 208, 212)", marginRight: "5px" }} /> <span className="spanTabTitle">{"Reviews"}</span></span>}>
-                                test test01
+                            <Tab tabClassName={offerStyle.offerTab} eventKey="test02" title={<span><FeedbackOutlinedIcon style={{ color: "rgb(240 101 36)", marginRight: "5px" }} /> <span className="spanTabTitle">{"Reviews"}</span></span>}>
+                                Service indisponible pour le moment
                             </Tab>
                         </Tabs>
                     </Container>
-
+                    <Helmet>
+                        <meta charSet="utf-8" />
+                        <title>{ offerSelected.titre } - Follow me travel</title>
+                        <meta name="description" content={offerSelected.courte_description} />
+                    </Helmet>
                 </div>)
         }else if(!isFetchingDestinationById && this.props.type == "destination"){
             return (<div>
@@ -86,22 +82,6 @@ class OfferCompponent extends Component {
                     <div className={offerStyle.offerTabs} style={{height: "350px"}}>
                         test
                     </div>
-                    {/* <Tabs  defaultActiveKey="information">
-                        <Tab tabClassName={offerStyle.offerTab} eventKey="information" title={<span><IoIosListBox /> <span className="spanTabTitle">{"Information"}</span></span>}>
-                            
-                        </Tab>
-                        <Tab tabClassName={offerStyle.offerTab} eventKey="program" title={<span><IoIosCalendar /> <span className="spanTabTitle">{"Program"}</span></span>}>
-                            
-                        </Tab>
-                        <Tab tabClassName={offerStyle.offerTab} eventKey="reserver" title={<span><IoIosCheckmarkCircle /> <span className="spanTabTitle">{"Réserver"}</span></span>}>
-                            <div className="row">
-                                
-                            </div>
-                        </Tab>
-                        <Tab tabClassName={offerStyle.offerTab} eventKey="test02" title={<span><IoIosStar /> <span className="spanTabTitle">{"Reviews"}</span></span>}>
-                            test test01
-                        </Tab>
-                    </Tabs> */}
                 </Container>
 
             </div>)
@@ -116,16 +96,19 @@ class OfferCompponent extends Component {
 }
 
 function mapStateToProps(state, props) {
-    const { rootReducer } = state;
-    const { reducersData } = rootReducer;
+    
     switch(props.type){
         case "offer":
-            const { isFetchingOfferSelect, offerSelected } = reducersData
+            const { offerReducer } = state;
+            const { offerReducersData } = offerReducer;
+            const { isFetchingOfferSelect, offerSelected } = offerReducersData
             return {
                 offerSelected,
                 isFetchingOfferSelect
             };
         case "destination":
+            const { rootReducer } = state;
+            const { reducersData } = rootReducer;
             const { isFetchingDestinationById, destinationById } = reducersData
             return {
                 destinationById,

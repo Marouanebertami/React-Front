@@ -3,7 +3,10 @@ import { Container, Row, Col,
     Form, Button } from 'react-bootstrap';
 import SearchStyle from './search.module.css';
 import { Redirect } from "react-router-dom";
-import { FaCalendarAlt, FaLocationArrow, FaNetworkWired, FaSearchLocation } from "react-icons/fa"
+import PinDropIcon from '@mui/icons-material/PinDrop';
+import EventIcon from '@mui/icons-material/Event';
+import LanIcon from '@mui/icons-material/Lan';
+import SearchIcon from '@mui/icons-material/Search';
 
 class Search extends Component {
 
@@ -43,35 +46,35 @@ class Search extends Component {
         }
 
         return (
-            <Container>
-                <Form onSubmit={this.handleSearch}>
-                    <Row style={{backgroundColor: "#fff", marginTop: "-40px", boxShadow: "0 3px 13px 0 rgba(0,0,0,.07)", fontFamily: "Poppins"}}>
-                        <Col md={3} className="p-0" style={{height: "80px", borderRight: "1px solid #f1f1f1"}}>
-                            <Form.Group className={SearchStyle.formGroup}>
-                                <FaLocationArrow className={SearchStyle.iconStyle} />
-                                <Form.Control onChange={(e) => this.handelWhere(e)} value={this.state.where} type="text" placeholder="Where" className={SearchStyle.inputStyle}></Form.Control>
-                            </Form.Group >
-                        </Col>
-                        <Col md={3} className="p-0" style={{height: "80px", borderRight: "1px solid #f1f1f1"}}>
-                            <Form.Group className={SearchStyle.formGroup}>
-                                <FaCalendarAlt className={SearchStyle.iconStyle} />
-                                <Form.Control onChange={(e) => this.handelMonth(e)} value={this.state.month} type="text" placeholder="Month" className={SearchStyle.inputStyle}></Form.Control>
-                            </Form.Group >
-                        </Col>
-                        <Col md={3} className="p-0" style={{height: "80px", borderRight: "1px solid #f1f1f1"}}>
-                            <Form.Group className={SearchStyle.formGroup}>
-                                <FaNetworkWired className={SearchStyle.iconStyle} />
-                                <Form.Control type="text" placeholder="Type" className={SearchStyle.inputStyle}></Form.Control>
-                            </Form.Group >
-                        </Col>
-                        <Col md={3} className="p-0" style={{height: "80px"}}>
-                            <Form.Group style={{margin: "0", height: "100%"}}>
-                                <Button type="submit" className="col-md-12" style={{height: "100%", borderRadius: 0, fontWeight: "700",backgroundColor: "#3fd0d4",borderColor: "#3fd0d4"}}><FaSearchLocation /> Rechercher</Button>
-                            </Form.Group >
-                        </Col>
-                    </Row>
-                </Form>
-            </Container>
+            <Form className={SearchStyle.formSpace} onSubmit={this.handleSearch}>
+                <div style={{ padding: "30px 25px", borderBottom: "1px solid #f1f1f1", background: "rgb(240 101 36)", fontFamily: "Poppins", color: "rgb(252 252 252)" }}>
+                    <h4>Expolre & Travel</h4>
+                    <p> Discover the world today. Find your perfect far destination.</p>
+                </div>
+                <Col md={12} className="p-0" style={{height: "80px", borderBottom: "1px solid #f1f1f1", fontFamily: "Poppins"}}>
+                    <Form.Group className={SearchStyle.formGroup}>
+                        <PinDropIcon className={SearchStyle.iconStyle} />
+                        <Form.Control onChange={(e) => this.handelWhere(e)} value={this.state.where} type="text" placeholder="Where" className={SearchStyle.inputStyle}></Form.Control>
+                    </Form.Group >
+                </Col>
+                <Col md={12} className="p-0" style={{height: "80px", borderBottom: "1px solid #f1f1f1", fontFamily: "Poppins"}}>
+                    <Form.Group className={SearchStyle.formGroup}>
+                        <EventIcon className={SearchStyle.iconStyle} />
+                        <Form.Control onChange={(e) => this.handelMonth(e)} value={this.state.month} type="text" placeholder="Month" className={SearchStyle.inputStyle}></Form.Control>
+                    </Form.Group >
+                </Col>
+                <Col md={12} className="p-0" style={{height: "80px", fontFamily: "Poppins"}}>
+                    <Form.Group className={SearchStyle.formGroup}>
+                        <LanIcon className={SearchStyle.iconStyle} />
+                        <Form.Control type="text" placeholder="Type" className={SearchStyle.inputStyle}></Form.Control>
+                    </Form.Group >
+                </Col>
+                <Col md={12} className="p-0" style={{height: "80px", fontFamily: "Poppins"}}>
+                    <Form.Group style={{margin: "0", height: "100%"}}>
+                        <Button type="submit" className={SearchStyle.btnSearch + " col-md-12"}><SearchIcon /> Rechercher</Button>
+                    </Form.Group >
+                </Col>
+            </Form>
         )
     }
 }

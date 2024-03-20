@@ -58,45 +58,25 @@ export function CheckOutForm(props){
     });
 
     useEffect(() => {
-        console.log("components is done!")
         setValue('id_tarif', id_tarif, { shouldValidate: false });
         var nbrPlace = 0;
         if(reservation != null){
             reservation.map((item) => {
                 nbrPlace += parseInt(item.nbr);
+                return nbrPlace;
             });
 
             reservation.map((item, index) => {
-
-                const newResVal = reservation.length;
-                const oldResVal = ReservationDetailFields.length;
-                ReservationDetailAppend({
+                // const newResVal = reservation.length;
+                // const oldResVal = ReservationDetailFields.length;
+                return ReservationDetailAppend({
                     reservation_pre_id: index,
                     mountPerPerssan: item.mountPerPerssan,
                     chambre_type: item.name,
                     nbr_persson: item.nbr,
                     total: item.total,
                 });
-                // if (newResVal > oldResVal) {
-                    
-                    // append tickets to field array
-                //     for (let i = oldResVal; i < newResVal; i++) {
-                //         console.log(i, oldResVal)
-                //         ReservationDetailAppend({
-                //             reservation_pre_id: index,
-                //             mountPerPerssan: item.mountPerPerssan,
-                //             chambre_type: item.name,
-                //             nbr_persson: item.nbr,
-                //             total: item.total,
-                //         });
-                //     }
-                    
-                // } else {
-                    // remove tickets from field array
-                //     for (let i = oldResVal; i > newResVal; i--) {
-                //         ReservationDetailRemove(i - 1);
-                //     }
-                // }
+                
             });
         }
         

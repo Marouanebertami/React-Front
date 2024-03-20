@@ -47,7 +47,7 @@ class Checkout extends Component {
                     }
                 }
                 item["information_voyageur"] = voyageurs_info;
-                return null;
+                return item["information_voyageur"];
             });
         }
 

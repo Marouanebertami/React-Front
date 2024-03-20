@@ -2,7 +2,10 @@ import React, { Component } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
 import { connect } from 'react-redux'
 import { fetchSliderData } from '../store/Reducers/actions'
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import SearchForm from './Search';
+import StarOutlineIcon from '@mui/icons-material/StarOutline';
+import './ComponentStyle/slider.css'
 
 class Slider extends Component {
     constructor(props) {
@@ -14,28 +17,28 @@ class Slider extends Component {
         dispatch(fetchSliderData());
     }
 
+    // handleIsLoading = (is_loading) => {
+    //     this.props.handleIsLoading(is_loading)
+    // }
+
     render() {
         const { sliders, isFetchingSliders } = this.props;
+        
         return (
-            <div className="slider" style={{ height: "520px", position: "relative", zIndex: "0" }}>
+            <div className="slider" style={{ height: "80vh", position: "relative", zIndex: "0" }}>
                 {
                     (!isFetchingSliders && sliders != undefined) ? 
                     (
-                        <Carousel style={{ height: "520px" }}>
+                        <Carousel className="carousel-container" style={{ height: "100%" }}>
                             {
                                 (sliders.map((item, i) => {
-                                    return ( <Carousel.Item key={i} style={{ height: "100%" }}>
+                                    return ( <Carousel.Item key={i} className='carousel-item' style={{ height: "100%" }}>
                                         <img
                                         className="d-block w-100"
                                         src={item.image_url}
                                         alt="First slide"
                                         style={{ objectFit: "cover", maxHeight: "520px" }}
                                         />
-                                        <Carousel.Caption style={{top: "50%", width: "100%", left: "50%", transform: "translate(-50%, -50%)" }}>
-                                            <h2 style={{ fontFamily: "Poppins", fontSize: "50px", fontWeight: "700" }}>{item.titre}</h2>
-                                            <p style={{ fontFamily: "Poppins" }}>{item.courte_description}</p>
-                                            <Link to={`/offer/${item.id}`} style={{backgroundColor: "rgb(63, 208, 212)", borderColor: "rgb(63, 208, 212)", borderRadius: "0", width: "30%"}} className="btn btn-primary">Book Now</Link>
-                                        </Carousel.Caption>
                                     </Carousel.Item>
                                     )
                                 }))
@@ -43,6 +46,7 @@ class Slider extends Component {
                         </Carousel>
                     ) : ""
                 }
+                <SearchForm />
             </div>
         )
     }
@@ -51,6 +55,7 @@ class Slider extends Component {
 function mapStateToProps(state) {
     const { rootReducer } = state;
     const { reducersData } = rootReducer;
+    console.log(reducersData)
     const { sliders, isFetchingSliders } = reducersData
     return {
         sliders: sliders,

@@ -1,0 +1,8 @@
+.carousel-container .carousel-inner{
+    height: 100% !important;
+}
+
+.carousel-container .carousel-inner .carousel-item img{
+    max-height: 100% !important;
+    height: 100%;
+}

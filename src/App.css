@@ -56,3 +56,14 @@ a:hover {
     transform: rotate(360deg);
   }
 }
+
+.loader{
+  background-color: #f1f2f3;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 90px;
+  background-position: 50%;
+  z-index: 9999999999;
+  position: fixed;
+  width: 100%;
+}

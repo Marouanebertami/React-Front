@@ -10,3 +10,13 @@
 .navLink a {
   color: #000 !important;
 }
+@media only screen and (max-width: 991px){
+  .ToggleBtn{
+    border: none;
+    color: rgb(255, 255, 255) !important;
+  }
+  
+  .menuBg{
+    background-color: rgb(241 101 42) !important;
+  }
+}

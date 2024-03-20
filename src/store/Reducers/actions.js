@@ -19,25 +19,31 @@ import { REQUEST_HOME_FIRST_SECTION_DATA,
     REQUEST_SEARCH_ERROR,
     REQUEST_LOGO_URL,
     RECEIVE_LOGO_URL,
-    REQUEST_LOGO_URL_ERROR } from '../constant'
+    REQUEST_LOGO_URL_ERROR,
+    REQUEST_INFO_SITE,
+    RECEIVE_INFO_SITE,
+    REQUEST_INFO_SITE_ERROR } from '../constant'
 
 export function requestOfferData() {
     return {
         type: REQUEST_HOME_FIRST_SECTION_DATA,
+        from: 'homeData'
     };
 }
 
 export function receiveOfferData(json){
     return {
         type: RECEIVE_HOME_FIRST_SECTION_DATA,
-        data: json.data
+        data: json.data,
+        from: 'homeData'
     }
 }
 
 function receiveOfferError(error){
     return {
         type: REQUEST_HOME_FIRST_SECTION_ERROR,
-        data: error
+        data: error,
+        from: 'homeData'
     }
 }
 
@@ -253,12 +259,41 @@ function receiveLogoUrlError(error){
 
 export function fetchLogoUrl() {
     return dispatch => {
-        console.log("start logo")
         dispatch(requestLogoUrl());
-        console.log("End logo")
         return API.get('/getLogo')
             .then(res => res)
             .then(json => dispatch(receiveLogoUrl(json)))
             .catch(err => dispatch(receiveLogoUrlError(err)));
+    };
+}
+
+//
+export function requestInfoSite() {
+    return {
+        type: REQUEST_INFO_SITE,
+    };
+}
+
+export function receiveInfoSite(json){
+    return {
+        type: RECEIVE_INFO_SITE,
+        data: json.data
+    }
+}
+
+function receiveInfoSiteError(error){
+    return {
+        type: REQUEST_INFO_SITE_ERROR,
+        data: error
+    }
+}
+
+export function fetchInfoSite() {
+    return dispatch => {
+        dispatch(requestInfoSite());
+        return API.get('/getLogo')
+            .then(res => res)
+            .then(json => dispatch(receiveInfoSite(json)))
+            .catch(err => dispatch(receiveInfoSiteError(err)));
     };
 }

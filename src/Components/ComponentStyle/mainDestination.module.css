@@ -14,3 +14,27 @@
   font-family: "Poppins";
   font-weight: 300;
 }
+
+.DestinationOfferClass > div{
+  padding-right: .6em !important;
+  padding-left: .6em  !important;
+}
+
+.DestinationItem::before {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  right: 0;
+  background-color: #00000061;
+  border-radius: 50%;
+}
+
+.DestinationItem{
+  position: relative;
+  height: 350px; 
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}

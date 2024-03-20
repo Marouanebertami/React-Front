@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import TopHeader from './TopHeader';
 import headerStyle from '../../css/header.module.css'
 import { fetchLogoUrl } from '../../store/Reducers/actions'
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import SegmentIcon from '@mui/icons-material/Segment';
 
 class Header extends Component {
 
@@ -22,12 +23,12 @@ class Header extends Component {
         
         return (
             <div className={headerStyle.header}>
-                <TopHeader />
-                <Navbar bg="light" expand="lg">
+                {/* <TopHeader /> */}
+                <Navbar className={headerStyle.menuBg} bg="light" expand="lg">
                     <Navbar.Brand href="/">
-                        <img src={(!isFetchingLogo) ? logoUrl : "" } style={{width: "150px",height: "55px"}} />
+                        { !isFetchingLogo ?  <img src={ logoUrl } alt="Follow Me Travel" style={{width: "100px",height: "70px"}} /> : ""}
                     </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Toggle className={headerStyle.ToggleBtn} aria-controls="basic-navbar-nav" ><SegmentIcon /></Navbar.Toggle>
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="m-auto">
                             <Nav className={headerStyle.navLink}>

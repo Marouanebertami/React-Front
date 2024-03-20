@@ -2,14 +2,16 @@ import React, { Component } from 'react'
 import offerStyle from '../ComponentStyle/offers.module.css';
 import { connect } from 'react-redux'
 import { Container, Tabs, Tab, Row,
-    Form, Button, Col } from 'react-bootstrap'
-// import { IoIosCalendar, IoIosListBox, IoIosCheckmarkCircle, IoIosStar, IoMdPin } from "react-icons/io"
-// import Offer from '../Offer'
-import { FaCalendarAlt, FaLocationArrow, FaStar } from "react-icons/fa"
+    Form, Button, Col } from 'react-bootstrap';
+import { IoMdPin } from "react-icons/io";
+import EventIcon from '@mui/icons-material/Event';
 import { Link } from "react-router-dom";
-import { fetchSearchData } from '../../store/Reducers/actions'
-import ReactPaginate from 'react-paginate'
-import SearchComponent from './searchComponent.module.css'
+import { fetchSearchData } from '../../store/Reducers/actions';
+import ReactPaginate from 'react-paginate';
+import SearchComponent from './searchComponent.module.css';
+import StarIcon from '@mui/icons-material/Star';
+import ReadMoreIcon from '@mui/icons-material/ReadMore';
+import '../ComponentStyle/offer.css';
 
 export class Search extends Component {
 
@@ -39,7 +41,6 @@ export class Search extends Component {
 
     loadDataPage = (data) => {
         let selected = data.selected;
-        
         const { dispatch } = this.props
         dispatch(fetchSearchData(this.state.where, this.state.type, this.state.month, selected+1))
     }
@@ -72,16 +73,15 @@ export class Search extends Component {
         
         return (
             <div>
-                <div className={offerStyle.offerVueParent} style={{backgroundImage: `url(http://127.0.0.1:8000/images/background/search.jpg)`}}>
+                <div className={offerStyle.offerVueParent} style={{backgroundImage: `url(http://127.0.0.1:8000/images/backImage.jpg)`}}>
                     <div className={offerStyle.offerTitleParent}>
                         <h2 className={offerStyle.offerTitle}>Trouver votre plan</h2>
                     </div>
                 </div>
 
                 <Container className="ContainerTabs">
-                    <Tabs className={offerStyle.offerTabs} style={{border: "1px solid #fff"}} defaultActiveKey="information">
-                        <Tab tabClassName={offerStyle.offerTab} eventKey="information" title={<span><FaCalendarAlt /> <span className="spanTabTitle">{"Date"}</span></span>}>
-                            {/* <Offer key={i} item={item} /> */}
+                    <Tabs className={offerStyle.offerTabs} style={{border: "1px solid rgb(255 255 255)"}} defaultActiveKey="information">
+                        <Tab tabClassName={offerStyle.offerTab} eventKey="information" title={<span><EventIcon /> <span className="spanTabTitle">{"Date"}</span></span>}>
                             <Row>
                                 <Col lg={9}>
                                     <Row>
@@ -91,31 +91,45 @@ export class Search extends Component {
                                                 search.data.map((item, i) => {
                                                     var etoil = [];
 
-                                                    for(var i=1;i<=item.etoil;i++){
-                                                        etoil.push(<FaStar key={i} style={{color: '#000'}} />)
+                                                    for(var j=1;j<=5;j++){
+                                                        if(item.etoil >= j){
+                                                            etoil.push(<StarIcon key={i} style={{color: "rgb(240, 101, 36)"}} />)
+                                                        }else{
+                                                            etoil.push(<StarIcon key={i} style={{color: "rgb(197 197 197)"}} />)
+                                                        }
                                                     }
 
                                                     return (
-                                                        <Col lg={6} style={{marginTop: "15px",marginBottom: "15px",}}>
-                                                            <Link to={`/offer/${item.id}`}>
-                                                                <div style={{boxShadow: "0px 0px 11px 0px rgb(219, 219, 219)",overflow: "hidden"}}>
-                                                                    <div style={{width: "100%", height: "200px", backgroundImage: `url(${item.image_url})`, backgroundSize: "cover", backgroundPosition: "center"}}></div>
-                                                                    <div style={{backgroundColor: "#3fd0d4", fontSize: "12px"}} className="pl-3 pr-3 pt-2 pb-2">
-                                                                        <span style={{color: "#fff", fontFamily: "Poppins", fontWeight: "400",marginLeft: "15px", marginRight: "15px"}}><FaCalendarAlt style={{ fontSize: "15px" }} /> {item.period}</span>
-                                                                        <span style={{color: "#fff", fontFamily: "Poppins", fontWeight: "400",marginLeft: "15px", marginRight: "15px"}}><FaLocationArrow style={{ fontSize: "15px" }} /> {item.destination}</span>
+                                                        <Col key={i} lg={6} style={{marginTop: "15px",marginBottom: "15px"}}>
+                                                            <Link className="linkReadMore" to={`/offer/${item.id}`}>
+                                                                <div style={{boxShadow: "0px 0px 11px 0px rgb(219, 219, 219)",overflow: "hidden", position: "relative"}}>
+                                                                    <div style={{width: "100%", height: "200px", backgroundImage: `url(${item.image_url})`, backgroundSize: "cover", backgroundPosition: "center", position: "relative"}}>
+                                                                        <p style={{ position: "absolute", bottom: "0", right: "0", padding: "15px", color: "#fff", backgroundColor: "rgb(240, 101, 36)", fontFamily: "Poppins" }}>
+                                                                            A prtire du <br />
+                                                                            <span style={{ fontWeight: "700" }}>1200 DH</span> <sub>/Pers</sub>
+                                                                        </p>
                                                                     </div>
-                                                                    <div className="p-4" style={{backgroundColor: "#fff"}}>
+                                                                    <div style={{backgroundColor: "rgb(244 97 46)", fontSize: "12px"}} className="pl-3 pr-3 pt-2 pb-2">
+                                                                        {item.period != null ? <span style={{color: "rgb(255 255 255)", fontFamily: "Poppins", fontWeight: "400",marginLeft: "15px", marginRight: "15px"}}><EventIcon style={{ fontSize: "15px" }} /> {item.period}</span> : ""}
+                                                                        {item.destination != null && item.destination != "" ? <span style={{color: "rgb(255 255 255)", fontFamily: "Poppins", fontWeight: "400",marginLeft: "15px", marginRight: "15px"}}><IoMdPin style={{ fontSize: "15px" }} /> {item.destination}</span> : ""}
+                                                                    </div>
+                                                                    <div className="p-4" style={{backgroundColor: "rgb(255 255 255)"}}>
                                                                         <h5 style={{fontFamily: "Poppins", color: "#000", fontWeight: "400"}}>
                                                                             {item.titre}
                                                                         </h5>
+                                                                        <div style={{ marginBottom: "10px" }}>
+                                                                            {
+                                                                                etoil.map(function(item, i){
+                                                                                    return <span>{item}</span>;
+                                                                                })
+                                                                            }
+                                                                        </div>
                                                                         <p style={{fontFamily: "Poppins", color: "#000", fontWeight: "300"}}>
                                                                             {item.courte_description}
                                                                         </p>
-                                                                        {   
-                                                                            etoil.map(function(item, i){
-                                                                                return(item)
-                                                                            })
-                                                                        }
+                                                                    </div>
+                                                                    <div className='readMoreDiv'>
+                                                                        <span className='readMoreSpan'>Read More <ReadMoreIcon /></span>
                                                                     </div>
                                                                 </div>
                                                             </Link>
@@ -159,7 +173,7 @@ export class Search extends Component {
                                             <Form.Control onChange={(e) => this.handelMonth(e)} className={SearchComponent.inputSearch} value={this.state.month} type="text" placeholder="Month"></Form.Control>
                                         </Form.Group>
                                         <Form.Group style={{margin: "0", height: "100%"}}>
-                                            <Button type="button" onClick={this.loadDataSearch} className="col-md-12" style={{borderRadius: 0, fontWeight: "700", color: "rgb(63, 208, 212)",backgroundColor: "#fff",borderColor: "#fff"}}>Rechercher</Button>
+                                            <Button type="button" onClick={this.loadDataSearch} className={"col-md-12 " + SearchComponent.searchButton}>Rechercher</Button>
                                         </Form.Group >
                                     </Col>
                                 </Col>

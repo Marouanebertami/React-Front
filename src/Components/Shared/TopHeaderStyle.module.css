@@ -8,3 +8,9 @@
   font-family: "Poppins", sans-serif;
   /*text-transform: uppercase;*/
 }
+
+@media only screen and (max-width: 991px){
+  .topHeader{
+    display: none !important;
+  }
+}

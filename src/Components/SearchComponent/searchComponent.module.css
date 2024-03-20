@@ -13,10 +13,24 @@
 
 .searchSpace {
   padding: 15px;
-  background-color: rgb(63, 208, 212);
+  background-color: rgb(244 97 46);
 }
 
 .searchSpace h4 {
-  color: #fff;
+  color: rgb(255 255 255);
   font-family: "Poppins";
+}
+
+.searchButton
+{
+  border-radius: 0 !important;
+  font-weight: 700 !important;
+  color: rgb(255 255 255) !important;
+  background-color: rgb(255 255 255 / 0%) !important;
+  border: 2px solid rgb(255 255 255) !important;
+}
+
+.searchButton:hover{
+  color: rgb(244 97 46) !important;
+  background-color: rgb(255 255 255) !important;
 }

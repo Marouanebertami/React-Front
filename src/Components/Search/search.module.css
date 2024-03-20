@@ -4,22 +4,71 @@
   border-color: transparent !important;
   padding-left: 60px !important;
   border: none !important;
+  background-color: rgb(240 101 36) !important;
 }
 
 .inputStyle:focus {
   box-shadow: none !important;
 }
 
+.inputStyle::placeholder{
+  color: rgb(252 252 252) !important;
+}
+
 .iconStyle {
   position: absolute;
   top: 49%;
-  left: 10%;
+  left: 7%;
   transform: translate(-50%, -50%);
-  color: #92989e;
+  color: rgb(252 252 252);
+}
+
+@media only screen and (max-width: 767px) {
+  .iconStyle {
+    left: 4% !important;
+  }
+}
+
+@media only screen and (max-width: 429px) {
+  .iconStyle {
+    left: 7% !important;
+  }
+}
+
+@media only screen and (max-width: 1033px) {
+  .formSpace{
+    width: 75% !important;
+    left: 50% !important;
+    top: 340px !important;
+  }
+}
+
+.formSpace{
+  position: absolute;
+  box-shadow: rgb(0 0 0 / 68%) 0px 0px 20px 0px;
+  top: 50%;
+  left: 25%;
+  width: 400px;
+  transform: translate(-50%, -50%);
 }
 
 .formGroup {
   margin: 0;
   height: 100%;
   position: relative;
+}
+
+.btnSearch{
+  height: 100% !important;
+  border-radius: 0 !important;
+  font-weight: 700 !important;
+  background-color: rgb(252 252 252) !important;
+  border-color: rgb(240 101 36);
+  border: 2px solid rgb(240 101 36) !important;
+  color: rgb(240 101 36) !important;
+}
+
+.btnSearch:hover{
+  background-color: rgb(240 101 36) !important;
+  color: rgb(252 252 252) !important;
 }

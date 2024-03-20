@@ -208,9 +208,7 @@ class Calendar extends Component {
     };
 
     redirectToTest = () => {
-        // if(this.state.totalMount){
-            this.setState({redirectToForm: true});
-        // }
+        this.setState({redirectToForm: true});
     }
 
     render() {
@@ -281,7 +279,6 @@ class Calendar extends Component {
                 cells.push(row);
             }
             if (i === totalSlots.length - 1) {
-                // let insertRow = cells.slice();
                 rows.push(cells);
             }
         });

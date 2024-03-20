@@ -103,3 +103,12 @@
   background: #0d6aaf;
   border-color: #0d6aaf;
 }
+
+.inputStyle{
+  border-radius: 0;
+}
+
+.inputStyle:focus{
+  border-color: #f06524 !important;
+  box-shadow: 0 0 0 0.2rem rgb(240 101 36 / 25%) !important;
+}

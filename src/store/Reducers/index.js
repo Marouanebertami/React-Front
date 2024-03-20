@@ -76,21 +76,21 @@ export function reducersData(
             });
 
         // Select Offer
-        case REQUEST_GET_OFFER_DATA:
-            return Object.assign({}, state, {
-                isFetchingOfferSelect: true,
-                offerSelected: null
-            });
-        case RECEIVE_GET_OFFER_DATA:
-            return Object.assign({}, state, {
-                isFetchingOfferSelect: false,
-                offerSelected: action.data,
-            });
-        case REQUEST_GET_OFFER_ERROR:
-            return Object.assign({}, state, {
-                isFetchingOfferSelect: false,
-                offerSelected: action.error,
-            });
+        // case REQUEST_GET_OFFER_DATA:
+        //     return Object.assign({}, state, {
+        //         isFetchingOfferSelect: true,
+        //         offerSelected: null
+        //     });
+        // case RECEIVE_GET_OFFER_DATA:
+        //     return Object.assign({}, state, {
+        //         isFetchingOfferSelect: false,
+        //         offerSelected: action.data,
+        //     });
+        // case REQUEST_GET_OFFER_ERROR:
+        //     return Object.assign({}, state, {
+        //         isFetchingOfferSelect: false,
+        //         offerSelected: action.error,
+        //     });
 
         // Destination By Id data
         case REQUEST_GET_DESTINATION_DATA:

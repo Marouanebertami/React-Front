@@ -15,18 +15,21 @@ function ProgramTab(props) {
                         (programs != null) ? 
                             programs.map(function(item, i){
                                 return(
-                                <div key={i} className="row">
-                                    <div className="col-md-1">
-                                        <h2 className="nbrJour" title={`Jour ${item.nbr_jour}`}>{item.nbr_jour}</h2>
-                                        <span className="separator">
-                                            <span className="separatorContent"></span>
-                                        </span>
+                                    <div key={i} className="row">
+                                        <div className="col-md-1">
+                                            <h2 className="nbrJour" title={`Jour ${item.nbr_jour}`}>{item.nbr_jour}</h2>
+                                            {
+                                                programs.length - 1 !== i ? (
+                                                <span className="separator">
+                                                    <span className="separatorContent"></span>
+                                                </span>) : ""
+                                            }
+                                        </div>
+                                        <div className="col-md-11">
+                                            <h2 className="jourTitle">{item.titre}</h2>
+                                            <p dangerouslySetInnerHTML={{ __html: item.description }}></p>
+                                        </div>
                                     </div>
-                                    <div className="col-md-11">
-                                        <h2 className="jourTitle">{item.titre}</h2>
-                                        <p dangerouslySetInnerHTML={{ __html: item.description }}></p>
-                                    </div>
-                                </div>
                                 )
                             })
                         :("loading")

@@ -48,7 +48,8 @@
 }
 
 .tab-pane p.tabPriceContent span{
-  color: rgb(63, 208, 212);
+  /* color: rgb(63, 208, 212); */
+  color: rgb(240, 101, 36);
 }
 
 .tab-pane p.tabPriceContent small {
@@ -170,4 +171,122 @@ span.separator span.separatorContent {
 
 .hasTarif span {
   cursor: pointer;
+}
+
+
+.readMoreDiv{
+  display: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0 0 0 / 43%);
+}
+
+.readMoreSpan{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 15px;
+  font-family: Poppins;
+  font-weight: 700;
+}
+
+.linkReadMore:hover .readMoreDiv{
+  display: block;
+}
+
+.mobileSpan{
+  color:rgb(240, 101, 36);
+  font-family: Poppins;
+  font-weight: 700;
+  padding-right: 15px;
+  display: none;
+}
+
+@media only screen and (max-width: 767px){
+  .mobileSpan{
+    display: block !important;
+  }
+
+  .webSpace{
+    display: none !important;
+  }
+}
+
+.reserveButton{
+  border: 1px solid rgb(240, 101, 36) !important;
+  color: rgb(240, 101, 36) !important;
+  background-color: transparent !important;
+  font-family: Poppins;
+  font-weight: 700;
+}
+
+.reserveButton:hover{
+  border: 1px solid rgb(240, 101, 36) !important;
+  color: rgb(255, 255, 255) !important;
+  background-color: rgb(240, 101, 36) !important;
+}
+
+.reserveEduisee{
+  border: 1px solid rgb(255, 0, 0) !important;
+  color: rgb(255, 255, 255) !important;
+  background-color: rgb(255, 0, 0) !important;
+  font-family: Poppins;
+  font-weight: 700;
+  cursor: auto !important;
+}
+
+.reserveButton:focus {
+  box-shadow: 0 0 0 0.2rem rgb(240 101 36) !important;
+}
+
+.reserveEduisee:focus{
+  box-shadow: 0 0 0 0.2rem rgb(255, 0, 0) !important;
+}
+
+.selectCustom:focus{
+  box-shadow: 0 0 0 0.2rem rgb(240 101 36/ 25%) !important;
+  border-color: rgb(240, 101, 36) !important;
+}
+
+.selectCustom{
+  color: rgb(240, 101, 36) !important;
+  font-family: Poppins;
+  font-weight: 700;
+}
+
+.btn-valider{
+  background-color: transparent !important;
+  color: rgb(240 101 36) !important;
+  font-family: Poppins !important;
+  font-weight: 700 !important;
+  border-color: rgb(240 101 36) !important;
+  width: 40% !important;
+}
+
+.btn-valider:hover{
+  background-color: rgb(240 101 36) !important;
+  color: rgb(255, 255, 255) !important;
+}
+
+.btn-valider:focus{
+  box-shadow: 0 0 0 0.2rem rgb(240 101 36/ 25%) !important;
+  border-color: rgb(240, 101, 36) !important;
+}
+
+.textMontantTotal{
+  font-family: Poppins !important;
+  font-weight: 700 !important;
+  font-size: 20px;
+}
+
+.montantValue{
+  font-family: Poppins !important;
+  font-weight: 700 !important;
+  font-size: 20px;
+  color: rgb(240, 101, 36) !important;
 }

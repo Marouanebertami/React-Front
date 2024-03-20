@@ -1,0 +1,11 @@
+.loader{
+    background-color: #f1f2f3;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: 90px;
+    background-position: 50%;
+    transition: all 2s;
+    z-index: 9999999999;
+    position: fixed;
+    width: 100%;
+}
